@@ -1,4 +1,4 @@
-name: Self Hosted Runners
+name: Self-Hosted [Host 13.3] [Guest 13.6] [Xcode 15.2]
 
 on:
   workflow_dispatch:
@@ -8,22 +8,13 @@ on:
 
 jobs:
   test-xcode:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [[self-hosted, macOS, ARM64, macos-13.6]]
+    runs-on: [self-hosted, macOS, ARM64, hOS13.4, gOS13.6, x15.2]
 
     steps:
       - uses: actions/checkout@v3
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest
-      - name: List Simulators
-        run: xcrun simctl list
-      - name: Run Tests
-        run: |
-          time xcodebuild test -scheme TestSuite -destination 'OS=17.2,name=iPhone 15 Pro' -configuration "Automation"
       - name: Clean Cache
         run: |
           xcrun -k
@@ -32,3 +23,8 @@ jobs:
           rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang.$(whoami)/ModuleCache"
           rm -rf ~/Library/Developer/Xcode/DerivedData/*
           rm -rf ~/Library/Caches/com.apple.dt.Xcode/*
+      - name: List Simulators
+        run: xcrun simctl list
+      - name: Run Tests
+        run: |
+          time xcodebuild test -scheme TestSuite -destination 'OS=17.2,name=iPhone 15 Pro' -configuration "Automation"
