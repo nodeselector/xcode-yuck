@@ -1,6 +1,10 @@
 name: Hosted [Host 13.4] [Guest 13.6] [Xcode 15.2]
 
-on: ['workflow_dispatch']
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '*/30 * * * *'
 
 jobs:
   test-xcode:
