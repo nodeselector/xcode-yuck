@@ -24,3 +24,11 @@ jobs:
       - name: Run Tests
         run: |
           time xcodebuild test -scheme TestSuite -destination 'OS=17.2,name=iPhone 15 Pro' -configuration "Automation"
+      - name: Clean Cache
+        run: |
+          xcrun -k
+          xcodebuild -alltargets clean
+          rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
+          rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang.$(whoami)/ModuleCache"
+          rm -rf ~/Library/Developer/Xcode/DerivedData/*
+          rm -rf ~/Library/Caches/com.apple.dt.Xcode/*
