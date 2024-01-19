@@ -27,4 +27,4 @@ jobs:
         run: xcrun simctl list
       - name: Run Tests
         run: |
-          time xcodebuild test -scheme TestSuite -destination 'OS=17.2,name=iPhone 15 Pro' -configuration "Automation"
+          time xcodebuild -scheme TestSuite -destination 'platform=iOS Simulator,OS=latest,name=iPhone 15 Pro' build-for-testing test-without-building
