@@ -1,4 +1,4 @@
-name: Hosted [Host 13.4] [Guest 13.6] [Xcode 15.2]
+name: Hosted [Runner 13] [Host 13.4] [Guest 13.6] [Xcode 15.2]
 
 on:
   workflow_dispatch:
