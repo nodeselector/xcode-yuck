@@ -3,8 +3,8 @@ name: Self-Hosted [Host 13.6] [Guest 13.6] [Xcode 15.2]
 on:
   workflow_dispatch:
 
-  schedule:
-    - cron: '*/30 * * * *'
+  # schedule:
+  #   - cron: '*/30 * * * *'
 
 jobs:
   test-xcode:
