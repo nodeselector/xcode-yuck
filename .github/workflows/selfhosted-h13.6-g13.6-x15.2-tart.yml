@@ -1,4 +1,4 @@
-name: Self-Hosted [Anka] [Host 13.6] [Guest 13.6] [Xcode 15.2]
+name: Self-Hosted [Host 13.6] [Guest 13.6] [Xcode 15.2]
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   test-xcode:
-    runs-on: [self-hosted, macOS, ARM64, hOS13.6, gOS13.6, x15.2, hvAnka]
+    runs-on: [self-hosted, macOS, ARM64, hOS13.6, gOS13.6, x15.2, hvTart]
 
     steps:
       - uses: actions/checkout@v3
