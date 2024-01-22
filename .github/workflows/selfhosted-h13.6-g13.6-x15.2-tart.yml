@@ -1,4 +1,4 @@
-name: Self-Hosted [Host 13.6] [Guest 13.6] [Xcode 15.2]
+name: Self-Hosted [Tart] [Host 13.6] [Guest 13.6] [Xcode 15.2]
 
 on:
   workflow_dispatch:
