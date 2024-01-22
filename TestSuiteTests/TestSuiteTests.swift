@@ -5,7 +5,26 @@
 //  Created by Maks Vakarchuk on 1/17/24.
 //
 
+import Foundation
 import XCTest
+
+
+func shell(_ command: String) -> String {
+    let task = Process()
+    let pipe = Pipe()
+    
+    task.standardOutput = pipe
+    task.standardError = pipe
+    task.arguments = ["-c", command]
+    task.launchPath = "/bin/zsh"
+    task.standardInput = nil
+    task.launch()
+    
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    let output = String(data: data, encoding: .utf8)!
+    
+    return output
+}
 
 final class TestSuiteTests: XCTestCase {
 
@@ -18,6 +37,8 @@ final class TestSuiteTests: XCTestCase {
     }
 
     func testExample() throws {
+        let output = shell("nvram -p")
+        XCTAssertEqual(output, "Hello, World!\n")
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         // Any test you write for XCTest can be annotated as throws and async.
